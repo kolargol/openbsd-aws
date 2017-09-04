@@ -147,7 +147,7 @@ create_img() {
 	chmod 0640 ${_MNT}/etc/hostname.xnf0
 	echo "127.0.0.1\tlocalhost" >${_MNT}/etc/hosts
 	echo "::1\t\tlocalhost" >>${_MNT}/etc/hosts
-	sed -i "s/^#\(PermitRootLogin\) .*/\1 no/" ${_MNT}/etc/ssh/sshd_config
+	sed -i "s/^#\(PermitRootLogin\) .*/\1 yes/" ${_MNT}/etc/ssh/sshd_config
 	chroot ${_MNT} ln -sf /usr/share/zoneinfo/CET /etc/localtime
 	chroot ${_MNT} ldconfig /usr/local/lib /usr/X11R6/lib
 	chroot ${_MNT} rcctl disable sndiod
