@@ -97,7 +97,7 @@ create_img() {
 
 	pr_action "fetching ec2-init"
 	ftp -V -o ${_WRKDIR}/ec2-init \
-		https://raw.githubusercontent.com/ajacoutot/aws-openbsd/master/ec2-init.sh
+		https://raw.githubusercontent.com/kolargol/openbsd-aws/master/ec2-init.sh
 
 	pr_action "extracting sets"
 	for i in ${_WRKDIR}/*${_REL}.tgz ${_MNT}/var/sysmerge/{,x}etc.tgz; do
