@@ -151,10 +151,6 @@ create_img() {
 	chroot ${_MNT} ln -sf /usr/share/zoneinfo/CET /etc/localtime
 	chroot ${_MNT} ldconfig /usr/local/lib /usr/X11R6/lib
 	chroot ${_MNT} rcctl disable sndiod
-	chroot ${_MNT} useradd -G wheel -L staff -c 'EC2 Default User' -g =uid \
-		-m -u 1000 ec2-user
-	echo "permit nopass ec2-user" >${_MNT}/etc/doas.conf
-	echo "ec2-user" >${_MNT}/root/.forward
 
 	pr_action "unmounting the image"
 	awk '$2~/^\//{sub(/^.+\./,"",$1);print $1, $2}' ${_WRKDIR}/fstab |
