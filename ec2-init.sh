@@ -52,7 +52,7 @@ ec2_instanceid()
 ec2_pubkey()
 {
 	local _pubkey="$(mock meta-data/public-keys/0/openssh-key)"
-	print -- "${_pubkey}" >>/home/ec2-user/.ssh/authorized_keys
+	print -- "${_pubkey}" >>/root/.ssh/authorized_keys
 }
 
 ec2_userdata()
