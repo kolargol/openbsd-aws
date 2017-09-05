@@ -82,7 +82,7 @@ create_img() {
 	pr_action "creating and mounting image filesystem"
 	vnconfig ${_VNDEV} ${_IMG}
 	fdisk -iy ${_VNDEV}
-	echo 'A\nd i\nd j\nd k\nR e\n512M\na i\n\n*\n\n/home\nq\ny\n' |
+	echo 'A\nd i\nd h\nd j\nd g\nd k\nR a\n6144M\nR e\n6144M\nR f\n6144M\na i\n\n*\n\n/home\nq\ny\n' |
 		disklabel -EF ${_WRKDIR}/fstab ${_VNDEV}
 	awk '$2~/^\//{sub(/^.+\./,"",$1);print $1, $2}' ${_WRKDIR}/fstab |
 		while read _p _m; do
