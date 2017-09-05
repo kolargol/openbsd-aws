@@ -169,7 +169,7 @@ create_img() {
 }
 
 volume_ids() {
-	aws --output json ec2 describe-conversion-tasks | \
+	aws --output json --region ${AWS_REGION} ec2 describe-conversion-tasks | \
 		python2.7 -c 'from __future__ import print_function;import sys,json; [print(task["ImportVolume"]["Volume"]["Id"]) if "Id" in task["ImportVolume"]["Volume"] else None for task in json.load(sys.stdin)["ConversionTasks"]]'
 }
 
