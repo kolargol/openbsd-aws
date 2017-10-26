@@ -7,7 +7,7 @@ Running whatever is in this repo will propably end up destroying a kitten factor
 
 ## Prerequisites
 
-* shell access to OpenBSD 6.1 with internet connection available.
+* shell access to OpenBSD with internet connection available.
 * minimum 12GB free space of /tmp (8GB for disk image and ~4GB for temporary files).
 * curl, ec2-api-tools, awscli and vmdktool packages installed.
 * shell environment variables available.
@@ -52,8 +52,8 @@ export MIRROR=http://mirror.switch.ch/ftp/pub/OpenBSD
 
 Build and upload your image.
 ```shell
-curl -sS -O https://raw.githubusercontent.com/kolargol/openbsd-aws/master/ec2-init.sh;
-ksh create-ami.sh -r "6.1" -d "OpenBSD 6.1";
+curl -sS -O https://raw.githubusercontent.com/kolargol/openbsd-aws/master/create-ami.sh;
+ksh create-ami.sh -r "6.2" -d "OpenBSD 6.2";
 ```
 
 Launch your newly created AMI, check public IP and login "ssh root@public_IP". 
