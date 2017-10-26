@@ -153,6 +153,11 @@ create_img() {
 	chroot ${_MNT} ldconfig /usr/local/lib /usr/X11R6/lib
 	chroot ${_MNT} rcctl disable sndiod
 
+	pr_action "relinking to create unique kernel"
+	sha256 ${_MNT}/bsd | (umask 077; sed "s,${_MNT},," \
+		>${_MNT}/var/db/kernel.SHA256)
+	chroot ${_MNT} /usr/libexec/reorder_kernel
+
 	pr_action "unmounting the image"
 	awk '$2~/^\//{sub(/^.+\./,"",$1);print $1, $2}' ${_WRKDIR}/fstab |
 		tail -r | while read _p _m; do
