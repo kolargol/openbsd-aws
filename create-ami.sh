@@ -144,6 +144,7 @@ create_img() {
 	echo "set tty com0" >>${_MNT}/etc/boot.conf
 	echo "dhcp" >${_MNT}/etc/hostname.xnf0
 	echo "inet6 autoconf" >>${_MNT}/etc/hostname.xnf0
+	echo "-soii" >>${_MNT}/etc/hostname.xnf0
 	echo "!/usr/local/libexec/ec2-init" >>${_MNT}/etc/hostname.xnf0
 	chmod 0640 ${_MNT}/etc/hostname.xnf0
 	echo "127.0.0.1\tlocalhost" >${_MNT}/etc/hosts
