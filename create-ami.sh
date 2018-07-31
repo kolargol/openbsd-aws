@@ -233,6 +233,8 @@ create_ami() {
 	#ec2-delete-disk-image
 
 	pr_action "creating snapshot in region ${AWS_REGION}"
+	# Give AWS another 10s
+	sleep 10
 	ec2-create-snapshot \
 	       -O "${AWS_ACCESS_KEY_ID}" \
 	       -W "${AWS_SECRET_ACCESS_KEY}" \
