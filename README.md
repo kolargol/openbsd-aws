@@ -9,7 +9,7 @@ Running whatever is in this repo will propably end up destroying a kitten factor
 
 * shell access to OpenBSD with internet connection available.
 * minimum 12GB free space of /tmp (8GB for disk image and ~4GB for temporary files).
-* curl, ec2-api-tools, awscli and vmdktool packages installed.
+* pkg_add curl ec2-api-tools awscli vmdktool
 * shell environment variables available.
 
     export AWS_ACCESS_KEY_ID=YOUR_AWS_ACCES_KEY;  
@@ -53,7 +53,7 @@ export MIRROR=http://mirror.switch.ch/ftp/pub/OpenBSD
 Build and upload your image.
 ```shell
 curl -sS -O https://raw.githubusercontent.com/kolargol/openbsd-aws/master/create-ami.sh;
-ksh create-ami.sh -r "6.2" -d "OpenBSD 6.2";
+ksh create-ami.sh -r "6.3" -d "OpenBSD 6.3";
 ```
 
 Launch your newly created AMI, check public IP and login "ssh root@public_IP". 
