@@ -232,6 +232,15 @@ create_ami() {
 	#rm -rf ${_WRKDIR}
 	#ec2-delete-disk-image
 
+        pr_action "checking for volume to be up"
+        check_vol=1
+        while [[ $check_vol -ne 0 ]] do
+                check_vol=$(ec2-describe-volume-status -O ${AWS_ACCESS_KEY_ID} -W ${AWS_SECRET_ACCESS_KEY} --region ${AWS_REGION} ${_VOL} >/dev/null 2>&1; echo $?)
+                echo -n "."
+                sleep 1
+        done
+        echo -e
+
 	pr_action "creating snapshot in region ${AWS_REGION}"
 	ec2-create-snapshot \
 	       -O "${AWS_ACCESS_KEY_ID}" \
