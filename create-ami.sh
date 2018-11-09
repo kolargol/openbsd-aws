@@ -128,7 +128,7 @@ create_img() {
 
 	pr_action "configuring the image"
 	# XXX hardcoded
-	echo "http://mirror.switch.ch/ftp/pub/OpenBSD" >${_MNT}/etc/installurl
+	echo "https://cdn.openbsd.org/pub/OpenBSD" >${_MNT}/etc/installurl
 	sed -e "s#\(/home ffs rw\)#\1,nodev,nosuid#" \
 		-e "s#\(/tmp ffs rw\)#\1,nodev,nosuid#" \
 		-e "s#\(/usr ffs rw\)#\1,nodev#" \
