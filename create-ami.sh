@@ -26,7 +26,7 @@ AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:=${AWS_SECRET_KEY}}
 AWS_REGION=${AWS_REGION:=eu-west-1}
 AWS_AZ=${AWS_AZ:=${AWS_REGION}a}
 
-MIRROR=${MIRROR:=http://mirror.switch.ch/ftp/pub/OpenBSD}
+MIRROR=${MIRROR:=https://cdn.openbsd.org/pub/OpenBSD}
 
 TIMESTAMP=$(date -u +%G%m%dT%H%M%SZ)
 ################################################################################
@@ -57,7 +57,7 @@ pr_action() {
 }
 
 create_img() {
-	_WRKDIR=$(mktemp -d -p ${TMPDIR:=/tmp} aws-ami.XXXXXXXXXX)
+	_WRKDIR=$(mktemp -d -p ${TMPDIR:=~/.tmp} aws-ami.XXXXXXXXXX)
 	_IMG=${_WRKDIR}/openbsd-${RELEASE:-current}-amd64-${TIMESTAMP}
 	local _MNT=${_WRKDIR}/mnt _REL=${RELEASE:-$(uname -r)} _p _m
 	local _VNDEV=$(vnconfig -l | grep 'not in use' | head -1 |

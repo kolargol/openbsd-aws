@@ -47,7 +47,7 @@ Prepare your environment.
 export AWS_ACCESS_KEY_ID=000_YOUR_AWS_ACCESS_KEY_HERE;
 export AWS_SECRET_ACCESS_KEY=000_AWS_SECRET_KEY_HERE;
 export AWS_REGION=eu-central-1;
-export MIRROR=http://mirror.switch.ch/ftp/pub/OpenBSD
+export MIRROR=https://cdn.openbsd.org/pub/OpenBSD
 ```
 
 Build and upload your image.
