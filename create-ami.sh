@@ -57,7 +57,7 @@ pr_action() {
 }
 
 create_img() {
-	_WRKDIR=$(mktemp -d -p ${TMPDIR:=~/.tmp} aws-ami.XXXXXXXXXX)
+	_WRKDIR=$(mktemp -d -p ${TMPDIR:=/tmp} aws-ami.XXXXXXXXXX)
 	_IMG=${_WRKDIR}/openbsd-${RELEASE:-current}-amd64-${TIMESTAMP}
 	local _MNT=${_WRKDIR}/mnt _REL=${RELEASE:-$(uname -r)} _p _m
 	local _VNDEV=$(vnconfig -l | grep 'not in use' | head -1 |
